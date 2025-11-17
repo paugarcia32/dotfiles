@@ -1,0 +1,76 @@
+[user]
+        name = paugarcia32
+        email = paugarcia32@gmail.com
+        signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJI74eiFazeScY1BRu0mBmUyB2RHNB16sTaG3s74KQ5/
+
+[core]
+	compression = 9
+	preloadindex = true
+        editor = vim
+        templateDir = ~/.config/git/template
+
+[credential]
+        helper =
+        helper = /usr/local/share/gcm-core/git-credential-manager
+
+[credential "https://dev.azure.com"]
+        useHttpPath = true
+
+[gpg]
+        format = ssh
+
+[commit]
+        gpgSign = true
+
+[push]
+        autoSetupRemote = true
+[pull]
+        rebase = true
+
+[status]
+        branch = true
+        showStash = true
+        showUntrackedFiles = all
+
+[diff]
+        context = 3
+        renames = copies
+        interHunkContext = 10
+
+[color "diff"]
+        meta = black bold
+        frag = magenta
+        context = white
+        old = red
+        whitespace = yellow reverse
+
+[color "decorate"]
+        HEAD = red
+        branch = blue
+        tag = yellow
+        remoteBranch = magenta
+
+[color "branch"]
+        current = magenta
+        local = default
+        remote = yellow
+        upstream = green
+        plain = blue
+
+[branch]
+        sort = -committerdate
+
+[tag]
+        sort = -taggerdate
+
+[pager]
+        diff = diff-so-fancy | $PAGER
+        branch = false
+        tag = false
+
+[diff-so-fancy]
+        markEmptyLines = false
+
+[log]
+        abbrevCommit = true
+        graphColors = blue,yellow,cyan,magenta,green,red
