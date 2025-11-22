@@ -1,0 +1,26 @@
+# <type>(<scope>): summary in imperative, start lowercase, no period
+# Example: feat(auth): add oauth login flow
+# Keep it under 50 chars. ############################# 50 chars is here #
+
+# Common types (Conventional Commits):
+# feat:     new user-facing feature
+# fix:      bug fix
+# chore:    maintenance, tooling, dependencies, configs
+# refactor: internal code changes (no behavior change)
+# docs:     documentation updates only
+# style:    formatting only (no logic changes)
+# test:     add or update tests
+# perf:     performance improvements
+
+# Leave a blank line between title and body.
+
+# Body (optional): explain WHAT and WHY, not HOW.
+# Wrap at 72 chars. ################################### 72 chars is here #
+# Include:
+# - context or motivation
+# - reasoning behind the change
+# - links to documentation/Jira/tickets if needed
+
+
+# Leave one empty line before co-authors.
+# Co-authored-by: Name <email@example.com>

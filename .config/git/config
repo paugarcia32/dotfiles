@@ -6,8 +6,7 @@
 [core]
 	compression = 9
 	preloadindex = true
-        editor = vim
-        templateDir = ~/.config/git/template
+        editor = nvim
 
 [credential]
         helper =
@@ -21,6 +20,7 @@
 
 [commit]
         gpgSign = true
+        template = ~/.config/git/commit_template
 
 [push]
         autoSetupRemote = true
