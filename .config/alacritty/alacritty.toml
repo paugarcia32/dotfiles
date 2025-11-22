@@ -1,0 +1,26 @@
+general.import = [
+  "~/.config/alacritty/themes/gruvbox.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding.x = 10
+padding.y = 30  
+dimensions = { columns = 160, lines = 50 }
+decorations = "Transparent"
+opacity = 0.8
+blur = true 
+option_as_alt = "Both"
+
+[font]
+normal.family = "JetBrainsMono Nerd Font Mono"
+size = 12
+
+[cursor]
+style = { shape = "beam", blinking = "always" }
+blink_interval = 500
+
+[mouse]
+hide_when_typing = true
