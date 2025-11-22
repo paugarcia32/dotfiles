@@ -45,6 +45,9 @@ fi
 alias ls='eza --icons -a --color=always --group-directories-first'
 alias cd..='cd ..'
 
+alias vi='nvim'
+alias vim='nvim'
+
 alias gs='git status --short'
 alias gd='git add'
 alias gd.='git add .'
