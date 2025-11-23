@@ -48,10 +48,12 @@ alias cd..='cd ..'
 alias vi='nvim'
 alias vim='nvim'
 
+alias cat='bat'
+
 alias gs='git status --short'
 alias gd='git add'
 alias gd.='git add .'
-alias gc='git commit'
+# alias gc='git commit'
 alias gp='git push'
 alias gpn='git push --no-verify'
 alias gu='git pull'
@@ -60,7 +62,70 @@ alias gb='git branch'
 alias gch='git checkout'
 alias gi='git init'
 alias gcl='git clone'
+# Git commit helper with Conventional Commit types
 
+# Git commit helper with nice menu (supports fzf if available)
+gcm() {
+  # Ensure we are inside a git repo
+  if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    echo "❌ Not inside a git repository."
+    return 1
+  fi
+
+  # Conventional Commit types
+  local types=(
+    "feat"
+    "fix"
+    "chore"
+    "docs"
+    "style"
+    "refactor"
+    "test"
+    "perf"
+  )
+
+  local type=""
+
+  # If fzf is available, use arrow-key menu
+  if command -v fzf > /dev/null 2>&1; then
+    # Build numbered list for display
+    local menu
+    menu=$(printf "%s\n" "${types[@]}" |
+      nl -w1 -s'. ' |
+      fzf --prompt="Select a commit type: " --height=40%)
+
+    # If user cancelled
+    if [[ -z "$menu" ]]; then
+      echo "No type selected, aborting."
+      return 1
+    fi
+
+    # Extract the actual type (after "N. ")
+    type=${menu#*. }   # strip "1. "
+  else
+    echo "Select a commit type:"
+    # Show numbered list: 1. Feat, 2. Fix, ...
+    local i t
+    for i in {1..${#types[@]}}; do
+      t=${types[$i]}
+      printf "%d. %s\n" "$i" "${t^}"  # ^ => capitalize first letter
+    done
+
+    local choice
+    read "choice?Type (1-${#types[@]}): "
+
+    # Validate choice
+    if [[ "$choice" != <-> ]] || (( choice < 1 || choice > ${#types[@]} )); then
+      echo "Invalid selection, aborting."
+      return 1
+    fi
+
+    type=${types[$choice]}
+  fi
+
+  # Open commit editor with the type prefilled
+  git commit -e -m "$type: "
+}
 
 
 # The next line updates PATH for the Google Cloud SDK.
